@@ -29,7 +29,7 @@ namespace TestWeb1
                     ddl.DataValueField = value;
                     ddl.DataBind();
                     con.Close();
-                    ddl.Items.Insert(0, new ListItem(defaultText, "0"));
+                    ddl.Items.Insert(0, new ListItem(defaultText, ""));
                 }
             }
             catch (Exception ex)
@@ -68,20 +68,20 @@ namespace TestWeb1
         {
             string stateQry = "select distinct s.* from Country c inner join State s on s.Country_Id = c.Country_Id and c.Country_Id = "+ ddlCountryPer.SelectedItem.Value+";";
           //  lbl1.Text = stateQry;
-            this.BindDropDown(ddlStatePer, stateQry, "State_name", "State_Id", "", "State");
+            this.BindDropDown(ddlStatePer, stateQry, "State_name", "State_Id", "-- SELECT --", "State");
             ddlStatePer.Enabled = true;
         }
 
         protected void State_Changed_Per(object sender, EventArgs e)
         {
-            this.BindDropDown(ddlCityPer, "select * from City where State_Id =" + ddlStatePer.SelectedItem.Value + " ;", "City_name", "City_Id", "", "City");
+            this.BindDropDown(ddlCityPer, "select * from City where State_Id =" + ddlStatePer.SelectedItem.Value + " ;", "City_name", "City_Id", "-- SELECT --", "City");
             ddlCityPer.Enabled = true;
             ddlPinPer.Enabled = true;
         }
 
         protected void City_Changed_Per(object sender, EventArgs e)
         {
-            this.BindDropDown(ddlPinPer, "select * from City c where c.City_Name = '" + ddlCityPer.SelectedItem.Text +"';", "Pin_Code", "City_Id", "", "Pin");
+            this.BindDropDown(ddlPinPer, "select * from City c where c.City_Name = '" + ddlCityPer.SelectedItem.Text +"';", "Pin_Code", "City_Id", "-- SELECT --", "Pin");
         }
 
         protected void Pin_Changed_Per(object sender, EventArgs e)
@@ -222,7 +222,7 @@ namespace TestWeb1
             lname = lastname.Text.Trim();
             email = em.Text.Trim();
             course = courseList.SelectedItem.Text;
-
+            lblgendererr.Text = "";
             if (RadioButton1.Checked) gender = "Male";
             if (RadioButton2.Checked) gender = "Female";
             if (gender == "") lblgendererr.Text = "*Required";
@@ -236,9 +236,6 @@ namespace TestWeb1
             tState = ddlStateTemp.SelectedItem.Value;
             tCity = ddlCityTemp.SelectedItem.Value;
             tPin = ddlPinTemp.SelectedItem.Text;
-
-            lbltest.Text = pCountry + " | " + pState + " | " + pCity + " | " + pPin;
-
 
 
             //string sql = "INSERT INTO [dbo].[student] ([first_name], [last_name], [email], [course], [gender]) VALUES ('" + fname + "','" + lname + "','" + email + "','" + course + "','" + gender + "');";

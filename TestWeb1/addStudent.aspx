@@ -83,13 +83,10 @@
             <asp:Label ID="lblCountryPerErr" runat="server" Text=""></asp:Label>
             <asp:Label ID="lblCountryPer" runat="server" Text="Country : "></asp:Label>
             <asp:DropDownList ID="ddlCountryPer" runat="server" AutoPostBack="true" OnSelectedIndexChanged="Country_Changed_Per">
-                <asp:ListItem Value="">-- SELECT --</asp:ListItem>
+                <asp:ListItem>-- SELECT --</asp:ListItem>
             </asp:DropDownList>
 
             &nbsp;&nbsp;&nbsp;
-            <asp:RequiredFieldValidator ControlToValidate="ddlCountryPer" ID="RequiredFieldValidator2" runat="server"
-                Style="color: red; font-weight: bold;" ErrorMessage="Required"></asp:RequiredFieldValidator>
-            <br /><br />
 
             <asp:Label ID="lblStatePerErr" runat="server" Text=""></asp:Label>
             <asp:Label ID="lblStatePer" runat="server" Text="State : "></asp:Label>
@@ -118,20 +115,21 @@
 
             <br />
 
-
-            
+            <asp:RequiredFieldValidator ControlToValidate="ddlCountryPer" ID="RequiredFieldValidator2" runat="server"
+                Style="color: red; font-weight: bold;" ErrorMessage="*Country is Required"></asp:RequiredFieldValidator>
+           &nbsp;            
 
             <asp:RequiredFieldValidator ControlToValidate="ddlStatePer" ID="RequiredFieldValidator3" runat="server"
-                Style="color: red; font-weight: bold;" ErrorMessage="Required"></asp:RequiredFieldValidator>
-            <br />
+                Style="color: red; font-weight: bold;" ErrorMessage="*State is Required"></asp:RequiredFieldValidator>
+            &nbsp;
 
             <asp:RequiredFieldValidator ControlToValidate="ddlCityPer" ID="RequiredFieldValidator4" runat="server"
-                Style="color: red; font-weight: bold;" ErrorMessage="Required"></asp:RequiredFieldValidator>
-            <br />
+                Style="color: red; font-weight: bold;" ErrorMessage="*City is Required"></asp:RequiredFieldValidator>
+           &nbsp;
 
             <asp:RequiredFieldValidator ControlToValidate="ddlPinPer" ID="RequiredFieldValidator5" runat="server"
-                Style="color: red; font-weight: bold;" ErrorMessage="Required"></asp:RequiredFieldValidator>
-            <br />
+                Style="color: red; font-weight: bold;" ErrorMessage="*Pin Code is Required"></asp:RequiredFieldValidator>
+            &nbsp;
 
 
 
@@ -168,6 +166,24 @@
 
             &nbsp;
             <!-- <asp:Button ID="btnresettemp" runat="server" OnClick="btnresettemp_Click" Text="Reset" /> -->
+
+                        <br />
+
+            <asp:RequiredFieldValidator ControlToValidate="ddlCountryTemp" ID="RequiredFieldValidator6" runat="server"
+                Style="color: red; font-weight: bold;" ErrorMessage="*Country is Required"></asp:RequiredFieldValidator>
+           &nbsp;            
+
+            <asp:RequiredFieldValidator ControlToValidate="ddlStateTemp" ID="RequiredFieldValidator7" runat="server"
+                Style="color: red; font-weight: bold;" ErrorMessage="*State is Required"></asp:RequiredFieldValidator>
+            &nbsp;
+
+            <asp:RequiredFieldValidator ControlToValidate="ddlCityTemp" ID="RequiredFieldValidator8" runat="server"
+                Style="color: red; font-weight: bold;" ErrorMessage="*City is Required"></asp:RequiredFieldValidator>
+           &nbsp;
+
+            <asp:RequiredFieldValidator ControlToValidate="ddlPinTemp" ID="RequiredFieldValidator9" runat="server"
+                Style="color: red; font-weight: bold;" ErrorMessage="*Pin Code is Required"></asp:RequiredFieldValidator>
+            &nbsp;
 
             <br />
             <br />
