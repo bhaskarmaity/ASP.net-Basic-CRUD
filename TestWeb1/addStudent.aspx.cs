@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -248,25 +249,69 @@ namespace TestWeb1
             string tempStudAddrMapping = "";
             */
 
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConStr"].ConnectionString);
+            
             /*
              InsertAllStudentData (@fname nvarchar(20),@lname nvarchar(20),@email nvarchar(30),@course nvarchar(10),@gender nvarchar(8),
        @perCountry int,@perState int,@perCity int,@tmpCountry int,	@tmpState int, @tmpCity int)
    */
+            string SQL = "InsertAllStudentData";
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConStr"].ConnectionString);
+            SqlCommand cmd = new SqlCommand(SQL, con);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter param;
+
+            param = cmd.Parameters.Add("@fname", SqlDbType.NVarChar, 20);
+            param.Value = fname;
+
+            param = cmd.Parameters.Add("@lname", SqlDbType.NVarChar, 20);
+            param.Value = lname;
+
+            param = cmd.Parameters.Add("@email", SqlDbType.NVarChar, 15);
+            param.Value = email;
+
+            param = cmd.Parameters.Add("@course", SqlDbType.NVarChar, 10);
+            param.Value = course;
+
+            param = cmd.Parameters.Add("@gender", SqlDbType.NVarChar, 8);
+            param.Value = gender;
+
+            param = cmd.Parameters.Add("@perCountry", SqlDbType.Int);
+            param.Value = pCountry;
+
+            param = cmd.Parameters.Add("@perState", SqlDbType.Int);
+            param.Value = pState;
+
+            param = cmd.Parameters.Add("@perCity", SqlDbType.Int);
+            param.Value = pCity;
+
+            param = cmd.Parameters.Add("@tmpCountry", SqlDbType.Int);
+            param.Value = tCountry;
+
+            param = cmd.Parameters.Add("@tmpState", SqlDbType.Int);
+            param.Value = tState;
+
+            param = cmd.Parameters.Add("@tmpCity", SqlDbType.Int);
+            param.Value = tCity;
+
+            
+
+            ////////////////////////////////////////////////////
             string parameters = "EXECUTE InsertAllStudentData 'Hello'";
             try
             {
-                SqlCommand cmd = new SqlCommand(parameters, con);
                 con.Open();
-                int std = cmd.ExecuteNonQuery();
+                int rowsAffected = cmd.ExecuteNonQuery();
                 con.Close();
+               // Label0.Text = "Rows Effected : " + rowsAffected;
 
-                if (std > 0) Label0.Text = "Successfully added";
+                if (rowsAffected < 0) Label0.Text = "Successfully added";
                 else Label0.Text = "Failed to add";
             }
-            catch
+            catch(Exception exc)
             {
-                Label0.Text = "Failed to add";
+                Label0.Text = "Failed to add!!!";
+                lbltest.Text = exc.ToString();
             }
         }
 
