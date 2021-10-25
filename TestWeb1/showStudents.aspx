@@ -62,23 +62,38 @@
             </div>
             <% } %>
            <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+            <asp:Label ID="Label7" runat="server" Text=""></asp:Label>
 
             <!-- ******************************************************************** -->
 
             <br />
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                 <Columns>
-                    <asp:BoundField DataField="Id" HeaderText="Id" />
+                    <asp:BoundField DataField="t_Std_Id" HeaderText="Id" />
                     <asp:BoundField DataField="first_name" HeaderText="First Name" />
                     <asp:BoundField DataField="last_name" HeaderText="Last Name" />
                     <asp:BoundField DataField="email" HeaderText="Email" />
                     <asp:BoundField DataField="course" HeaderText="Course" />
                     <asp:BoundField DataField="gender" HeaderText="Gender" />
 
+
+                    <asp:BoundField DataField="p_City_Name" HeaderText="P City" />
+                    <asp:BoundField DataField="p_Pin_Code" HeaderText="P Pin" />
+                    <asp:BoundField DataField="p_State_Name" HeaderText="P State" />
+                    <asp:BoundField DataField="p_Country_name" HeaderText="P Country" />
+
+                    <asp:BoundField DataField="t_City_Name" HeaderText="P City" />
+                    <asp:BoundField DataField="t_Pin_Code" HeaderText="P Pin" />
+                    <asp:BoundField DataField="t_State_Name" HeaderText="P State" />
+                    <asp:BoundField DataField="t_Country_name" HeaderText="P Country" />
+
+
+
                     <asp:TemplateField HeaderText="Actions">
                         <ItemTemplate>
-                            <asp:LinkButton ID="editBtn" OnClick="editBtn_Click" CommandArgument='<%#Eval("Id") + ";" + Eval("first_name")+ ";" + Eval("last_name")+ ";" + Eval("email")+ ";" + Eval("course")+ ";" + Eval("gender") %>' runat="server">Edit</asp:LinkButton>
-                            <asp:LinkButton ID="deleteBtn" OnClick="deleteBtn_Click" CommandArgument='<%#Eval("Id")%>' runat="server">Delete</asp:LinkButton>
+                            <asp:LinkButton ID="editBtn" OnClick="editBtn_Click" CommandArgument='<%# Eval("first_name") + ";" + Eval("last_name") + ";" + Eval("email") + ";" + Eval("course") + ";" + Eval("gender") + ";" + Eval("t_Std_Id") + ";" + Eval("p_City_Name") + ";" + Eval("p_Pin_Code") + ";" + Eval("p_State_Name") + ";" + Eval("p_Country_name") + ";" + Eval("p_City_Id") + ";" + Eval("p_tempPart2") + ";" + Eval("t_Std_Id") + ";" + Eval("t_City_Name") + ";" + Eval("t_Pin_Code") + ";" + Eval("t_State_Name") + ";" + Eval("t_Country_name") + ";" + Eval("t_City_Id") + ";" + Eval("t_tempPart2") %>' runat="server">Edit</asp:LinkButton>
+                            <asp:LinkButton ID="deleteBtn" OnClick="deleteBtn_Click" CommandArgument='<%# Eval("first_name") + ";" + Eval("last_name") + ";" + Eval("email") + ";" + Eval("course") + ";" + Eval("gender") + ";" + Eval("t_Std_Id") + ";" + Eval("p_City_Name") + ";" + Eval("p_Pin_Code") + ";" + Eval("p_State_Name") + ";" + Eval("p_Country_name") + ";" + Eval("p_City_Id") + ";" + Eval("p_tempPart2") + ";" + Eval("t_Std_Id") + ";" + Eval("t_City_Name") + ";" + Eval("t_Pin_Code") + ";" + Eval("t_State_Name") + ";" + Eval("t_Country_name") + ";" + Eval("t_City_Id") + ";" + Eval("t_tempPart2")%>' runat="server">Delete</asp:LinkButton>
+
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

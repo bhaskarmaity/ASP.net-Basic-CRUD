@@ -237,23 +237,7 @@ namespace TestWeb1
             tState = ddlStateTemp.SelectedItem.Value;
             tCity = ddlCityTemp.SelectedItem.Value;
             tPin = ddlPinTemp.SelectedItem.Text;
-
-
-            //string sql = "INSERT INTO [dbo].[student] ([first_name], [last_name], [email], [course], [gender]) VALUES ('" + fname + "','" + lname + "','" + email + "','" + course + "','" + gender + "');";
-            /*
-            string perAddressSql = "INSERT INTO [dbo].[Address] ([Country_Id] ,[State_Id] ,[City_Id]) Output Inserted.Addr_Id VALUES (" + ddlCountryPer.SelectedValue + ","+ddlStatePer.SelectedValue+","+ ddlCityPer.SelectedItem.Value +");";
-            string tempAddressSql = "INSERT INTO [dbo].[Address] ([Country_Id] ,[State_Id] ,[City_Id]) Output Inserted.Addr_Id VALUES (" + ddlCountryTemp.SelectedValue + "," + ddlStateTemp.SelectedValue + "," + ddlCityTemp.SelectedItem.Value + ");";
-            string studentQry = "INSERT INTO [dbo].[Student] ([first_name],[last_name],[email],[course],[gender]) Output Inserted.Id VALUES ('" + firstname.Text + "','" + lastname.Text + "' ,'" + em.Text + "' ,'" + courseList.SelectedValue + "' ,'" + gender + "');";
-            lbl1.Text = "Student : " + studentQry + "</br>" + "Temp Addr. : " + tempAddressSql + "</br>" + "Per Addr." + perAddressSql + "</br>";
-            string perStudAddrMapping = "";
-            string tempStudAddrMapping = "";
-            */
-
-            
-            /*
-             InsertAllStudentData (@fname nvarchar(20),@lname nvarchar(20),@email nvarchar(30),@course nvarchar(10),@gender nvarchar(8),
-       @perCountry int,@perState int,@perCity int,@tmpCountry int,	@tmpState int, @tmpCity int)
-   */
+        
             string SQL = "InsertAllStudentData";
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConStr"].ConnectionString);
             SqlCommand cmd = new SqlCommand(SQL, con);
@@ -294,16 +278,11 @@ namespace TestWeb1
             param = cmd.Parameters.Add("@tmpCity", SqlDbType.Int);
             param.Value = tCity;
 
-            
-
-            ////////////////////////////////////////////////////
-            string parameters = "EXECUTE InsertAllStudentData 'Hello'";
             try
             {
                 con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 con.Close();
-               // Label0.Text = "Rows Effected : " + rowsAffected;
 
                 if (rowsAffected < 0) Label0.Text = "Successfully added";
                 else Label0.Text = "Failed to add";
